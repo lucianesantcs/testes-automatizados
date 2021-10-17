@@ -10,7 +10,7 @@ import { UniqueIdService } from '../../services/unique-id/unique-id.service';
 export class LikeWidgetComponent implements OnInit {
   @Output() public liked = new EventEmitter<void>();
   @Input() public likes = 0;
-  @Input() public id = null;
+  @Input() public id: string = null;
 
   public faIcon = { faThumbsUp };
 
@@ -20,7 +20,7 @@ export class LikeWidgetComponent implements OnInit {
     this.liked.emit();
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     if(!this.id) {
       this.uniqueIdService.generateUniqueIdWithPrefix('like-widget');
     }
